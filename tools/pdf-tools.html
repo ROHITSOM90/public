@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head content as index.html -->
+    <title>Free PDF Tools - Convert, Merge, Split, Edit PDF Files</title>
+    <meta name="description" content="Free online PDF tools to convert, merge, split, edit, and secure your PDF documents. No installation required.">
+</head>
+<body>
+    <!-- Same header as index.html -->
+
+    <!-- PDF Tools Hero -->
+    <section class="sub-hero">
+        <div class="container">
+            <h1>Free PDF Tools</h1>
+            <p>Convert, edit, and manage your PDF files with our free online tools</p>
+        </div>
+    </section>
+
+    <!-- PDF Tools Section -->
+    <section class="pdf-tools" id="convert">
+        <div class="container">
+            <h2>PDF Conversion Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDF to editable Word document (.docx)</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-word')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>PDF to Excel</h3>
+                    <p>Extract tables from PDF to Excel (.xlsx)</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-excel')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3>PDF to PowerPoint</h3>
+                    <p>Convert PDF to editable PowerPoint (.pptx)</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-ppt')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pdf-tools" id="merge">
+        <div class="container">
+            <h2>PDF Organization Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDFs into one document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('merge-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Split PDF</h3>
+                    <p>Divide a PDF into multiple files</p>
+                    <button class="btn tool-btn" onclick="openToolModal('split-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h3>Delete PDF Pages</h3>
+                    <p>Remove unwanted pages from your PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('delete-pdf-pages')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-crop"></i>
+                    </div>
+                    <h3>Crop PDF</h3>
+                    <p>Adjust margins and crop PDF pages</p>
+                    <button class="btn tool-btn" onclick="openToolModal('crop-pdf')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pdf-tools" id="edit">
+        <div class="container">
+            <h2>PDF Editing Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Edit PDF</h3>
+                    <p>Modify text and images in your PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('edit-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Add Text to PDF</h3>
+                    <p>Insert new text into your PDF document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('add-text-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Add Image to PDF</h3>
+                    <p>Insert images into your PDF document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('add-image-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-stamp"></i>
+                    </div>
+                    <h3>Add Watermark</h3>
+                    <p>Add text or image watermark to PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('watermark-pdf')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pdf-tools" id="security">
+        <div class="container">
+            <h2>PDF Security Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Password Protect PDF</h3>
+                    <p>Add password security to your PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('protect-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Remove PDF Password</h3>
+                    <p>Unlock password-protected PDFs</p>
+                    <button class="btn tool-btn" onclick="openToolModal('unlock-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>Redact PDF</h3>
+                    <p>Permanently remove sensitive information</p>
+                    <button class="btn tool-btn" onclick="openToolModal('redact-pdf')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Banner -->
+    <section class="ad-banner">
+        <div class="container">
+            <!-- Google AdSense Banner -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
+
+    <!-- Tool Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeToolModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Same footer as index.html -->
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/pdf-tools.js"></script>
+</body>
+</html>
