@@ -1,79 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Tools - PDF, Image, Video Converter</title>
-    <meta name="description" content="Free online tools for PDF, image, and video conversion. Convert, merge, split, edit files without installation.">
-    <meta name="keywords" content="PDF converter, image converter, video converter, free online tools">
-    
-    <!-- Google Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
-    
-    <!-- SHOMonetization -->
-    <script src="https://cdn.shomonetization.com/sho.js" sho-pub="YOUR_SHO_PUB_KEY"></script>
-    
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Same head content as index.html -->
+    <title>Free PDF Tools - Convert, Merge, Split, Edit PDF Files</title>
+    <meta name="description" content="Free online PDF tools to convert, merge, split, edit, and secure your PDF documents. No installation required.">
 </head>
 <body>
-    <header>
+    <!-- Same header as index.html -->
+
+    <!-- PDF Tools Hero -->
+    <section class="sub-hero">
         <div class="container">
-            <div class="logo">
-                <h1>FreeTools<span>.online</span></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="pdf-tools.html">PDF Tools</a></li>
-                    <li><a href="image-tools.html">Image Tools</a></li>
-                    <li><a href="video-tools.html">Video Tools</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+            <h1>Free PDF Tools</h1>
+            <p>Convert, edit, and manage your PDF files with our free online tools</p>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h2>Free Online File Conversion Tools</h2>
-                <p>Convert, edit, and optimize your PDFs, images, and videos without installing any software</p>
-                <div class="cta-buttons">
-                    <a href="pdf-tools.html" class="btn primary">PDF Tools</a>
-                    <a href="image-tools.html" class="btn secondary">Image Tools</a>
-                    <a href="video-tools.html" class="btn tertiary">Video Tools</a>
+    <!-- PDF Tools Section -->
+    <section class="pdf-tools" id="convert">
+        <div class="container">
+            <h2>PDF Conversion Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDF to editable Word document (.docx)</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-word')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>PDF to Excel</h3>
+                    <p>Extract tables from PDF to Excel (.xlsx)</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-excel')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3>PDF to PowerPoint</h3>
+                    <p>Convert PDF to editable PowerPoint (.pptx)</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-ppt')">Use Tool</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="features">
-            <div class="container">
-                <div class="feature-card">
-                    <i class="fas fa-file-pdf"></i>
-                    <h3>PDF Tools</h3>
-                    <p>Convert, merge, split, compress, and edit PDF files with our free online tools.</p>
+    <section class="pdf-tools" id="merge">
+        <div class="container">
+            <h2>PDF Organization Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDFs into one document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('merge-pdf')">Use Tool</button>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-image"></i>
-                    <h3>Image Tools</h3>
-                    <p>Convert, resize, compress, and edit images in various formats.</p>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Split PDF</h3>
+                    <p>Divide a PDF into multiple files</p>
+                    <button class="btn tool-btn" onclick="openToolModal('split-pdf')">Use Tool</button>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-video"></i>
-                    <h3>Video Tools</h3>
-                    <p>Convert, compress, trim, and edit video files online.</p>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h3>Delete PDF Pages</h3>
+                    <p>Remove unwanted pages from your PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('delete-pdf-pages')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-crop"></i>
+                    </div>
+                    <h3>Crop PDF</h3>
+                    <p>Adjust margins and crop PDF pages</p>
+                    <button class="btn tool-btn" onclick="openToolModal('crop-pdf')">Use Tool</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Ad Unit -->
-        <div class="container ad-container">
+    <section class="pdf-tools" id="edit">
+        <div class="container">
+            <h2>PDF Editing Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Edit PDF</h3>
+                    <p>Modify text and images in your PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('edit-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3>Add Text to PDF</h3>
+                    <p>Insert new text into your PDF document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('add-text-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Add Image to PDF</h3>
+                    <p>Insert images into your PDF document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('add-image-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-stamp"></i>
+                    </div>
+                    <h3>Add Watermark</h3>
+                    <p>Add text or image watermark to PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('watermark-pdf')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pdf-tools" id="security">
+        <div class="container">
+            <h2>PDF Security Tools</h2>
+            <div class="tool-grid">
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Password Protect PDF</h3>
+                    <p>Add password security to your PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('protect-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Remove PDF Password</h3>
+                    <p>Unlock password-protected PDFs</p>
+                    <button class="btn tool-btn" onclick="openToolModal('unlock-pdf')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>Redact PDF</h3>
+                    <p>Permanently remove sensitive information</p>
+                    <button class="btn tool-btn" onclick="openToolModal('redact-pdf')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Banner -->
+    <section class="ad-banner">
+        <div class="container">
+            <!-- Google AdSense Banner -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-YOUR_ADSENSE_ID"
@@ -84,63 +175,22 @@
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
+    </section>
 
-        <section class="how-it-works">
-            <div class="container">
-                <h2>How It Works</h2>
-                <div class="steps">
-                    <div class="step">
-                        <span>1</span>
-                        <p>Select your tool</p>
-                    </div>
-                    <div class="step">
-                        <span>2</span>
-                        <p>Upload your file</p>
-                    </div>
-                    <div class="step">
-                        <span>3</span>
-                        <p>Process and download</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Tools</h4>
-                    <ul>
-                        <li><a href="pdf-tools.html">PDF Tools</a></li>
-                        <li><a href="image-tools.html">Image Tools</a></li>
-                        <li><a href="video-tools.html">Video Tools</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 FreeTools.online. All rights reserved.</p>
+    <!-- Tool Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeToolModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Content will be loaded dynamically -->
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="assets/js/main.js"></script>
+    <!-- Same footer as index.html -->
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/pdf-tools.js"></script>
 </body>
 </html>
