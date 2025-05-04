@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Image Tools - Convert, Resize, Compress Images Online</title>
+    <meta name="description" content="Free online image tools to convert, resize, compress, and edit your images. Supports JPG, PNG, GIF, WEBP and more.">
+    
+    <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    
+    <!-- SHOMonetization -->
+    <script src="https://cdn.shomonetization.com/sho.js" sho-publisher-id="YOUR_SHO_ID"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">FreeOnlineTools</a>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pdf-tools.html">PDF Tools</a></li>
+                    <li class="dropdown active">
+                        <a href="image-tools.html">Image Tools <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="image-tools.html#convert">Convert Image</a>
+                            <a href="image-tools.html#resize">Resize Image</a>
+                            <a href="image-tools.html#compress">Compress Image</a>
+                            <a href="image-tools.html#edit">Edit Image</a>
+                        </div>
+                    </li>
+                    <li><a href="video-tools.html">Video Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
+    <!-- Image Tools Hero -->
+    <section class="sub-hero">
+        <div class="container">
+            <h1>Free Image Tools</h1>
+            <p>Convert, resize, compress, and edit your images online for free</p>
+        </div>
+    </section>
+
+    <!-- Image Tools Section -->
+    <section class="image-tools" id="convert">
+        <div class="container">
+            <h2>Image Conversion Tools</h2>
+            <div class="tool-grid">
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Convert Image Format</h3>
+                    <p>Convert between JPG, PNG, GIF, WEBP, and more</p>
+                    <button class="btn tool-btn" onclick="openToolModal('convert-image')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>JPG to PNG</h3>
+                    <p>Convert JPG images to PNG format</p>
+                    <button class="btn tool-btn" onclick="openToolModal('jpg-to-png')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>PNG to JPG</h3>
+                    <p>Convert PNG images to JPG format</p>
+                    <button class="btn tool-btn" onclick="openToolModal('png-to-jpg')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>WEBP Converter</h3>
+                    <p>Convert WEBP to JPG/PNG and vice versa</p>
+                    <button class="btn tool-btn" onclick="openToolModal('webp-converter')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-tools" id="resize">
+        <div class="container">
+            <h2>Image Resize & Crop Tools</h2>
+            <div class="tool-grid">
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-expand-alt"></i>
+                    </div>
+                    <h3>Resize Image</h3>
+                    <p>Change image dimensions while maintaining quality</p>
+                    <button class="btn tool-btn" onclick="openToolModal('resize-image')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-crop"></i>
+                    </div>
+                    <h3>Crop Image</h3>
+                    <p>Cut out portions of your image</p>
+                    <button class="btn tool-btn" onclick="openToolModal('crop-image')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Bulk Resize</h3>
+                    <p>Resize multiple images at once</p>
+                    <button class="btn tool-btn" onclick="openToolModal('bulk-resize')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-tools" id="compress">
+        <div class="container">
+            <h2>Image Compression Tools</h2>
+            <div class="tool-grid">
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h3>Compress JPG</h3>
+                    <p>Reduce JPG file size without losing quality</p>
+                    <button class="btn tool-btn" onclick="openToolModal('compress-jpg')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h3>Compress PNG</h3>
+                    <p>Reduce PNG file size with transparency support</p>
+                    <button class="btn tool-btn" onclick="openToolModal('compress-png')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-archive"></i>
+                    </div>
+                    <h3>Bulk Compress</h3>
+                    <p>Compress multiple images at once</p>
+                    <button class="btn tool-btn" onclick="openToolModal('bulk-compress')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-tools" id="edit">
+        <div class="container">
+            <h2>Image Editing Tools</h2>
+            <div class="tool-grid">
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                    <h3>Adjust Colors</h3>
+                    <p>Change brightness, contrast, saturation</p>
+                    <button class="btn tool-btn" onclick="openToolModal('adjust-colors')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Enhance Quality</h3>
+                    <p>Automatically improve image quality</p>
+                    <button class="btn tool-btn" onclick="openToolModal('enhance-quality')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-text-height"></i>
+                    </div>
+                    <h3>Add Text</h3>
+                    <p>Overlay text on your images</p>
+                    <button class="btn tool-btn" onclick="openToolModal('add-text')">Use Tool</button>
+                </div>
+                <div class="image-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-stamp"></i>
+                    </div>
+                    <h3>Watermark</h3>
+                    <p>Add watermark to protect your images</p>
+                    <button class="btn tool-btn" onclick="openToolModal('watermark-image')">Use Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Banner -->
+    <section class="ad-banner">
+        <div class="container">
+            <!-- Google AdSense Banner -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
+
+    <!-- Tool Modal -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeToolModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>FreeOnlineTools</h3>
+                    <p>Providing free online tools for PDF, image, and video conversion since 2023.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pdf-tools.html">PDF Tools</a></li>
+                        <li><a href="image-tools.html">Image Tools</a></li>
+                        <li><a href="video-tools.html">Video Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FreeOnlineTools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/image-tools.js"></script>
+</body>
+</html>
