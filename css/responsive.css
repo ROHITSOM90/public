@@ -1,0 +1,161 @@
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .tool-categories {
+        gap: 20px;
+    }
+    
+    .tool-card {
+        width: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 42px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .feature-grid,
+    .tool-grid,
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tool-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tool-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        padding: 10px 15px;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar.active {
+        left: 0;
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .navbar ul li {
+        margin: 10px 0;
+    }
+    
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        display: none;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .sub-hero h1 {
+        font-size: 32px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .team-grid,
+    .revenue-model,
+    .tech-stack {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .feature-grid,
+    .tool-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-item,
+    .tool-item,
+    .pdf-tool-card,
+    .image-tool-card,
+    .video-tool-card {
+        padding: 20px;
+    }
+    
+    .file-upload-area {
+        padding: 20px;
+    }
+    
+    .about-section,
+    .contact-form,
+    .contact-info {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 8px;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+    }
+}
