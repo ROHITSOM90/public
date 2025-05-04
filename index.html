@@ -11,69 +11,147 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
     
     <!-- SHOMonetization -->
-    <script src="https://cdn.shomonetization.com/sho.js" sho-pub="YOUR_SHO_PUB_KEY"></script>
+    <script src="https://cdn.shomonetization.com/sho.js" sho-publisher-id="YOUR_SHO_ID"></script>
     
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
+    <!-- Header -->
+    <header class="header">
         <div class="container">
             <div class="logo">
-                <h1>FreeTools<span>.online</span></h1>
+                <a href="index.html">FreeOnlineTools</a>
             </div>
-            <nav>
+            <nav class="navbar">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="pdf-tools.html">PDF Tools</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="pdf-tools.html">PDF Tools <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="pdf-tools.html#convert">Convert PDF</a>
+                            <a href="pdf-tools.html#merge">Merge PDF</a>
+                            <a href="pdf-tools.html#split">Split PDF</a>
+                            <a href="pdf-tools.html#edit">Edit PDF</a>
+                            <a href="pdf-tools.html#security">PDF Security</a>
+                        </div>
+                    </li>
                     <li><a href="image-tools.html">Image Tools</a></li>
                     <li><a href="video-tools.html">Video Tools</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
             </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h2>Free Online File Conversion Tools</h2>
-                <p>Convert, edit, and optimize your PDFs, images, and videos without installing any software</p>
-                <div class="cta-buttons">
-                    <a href="pdf-tools.html" class="btn primary">PDF Tools</a>
-                    <a href="image-tools.html" class="btn secondary">Image Tools</a>
-                    <a href="video-tools.html" class="btn tertiary">Video Tools</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <div class="feature-card">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Free Online File Conversion Tools</h1>
+            <p>Convert, edit, and manage your PDFs, images, and videos without installing any software</p>
+            <div class="tool-categories">
+                <a href="pdf-tools.html" class="tool-card">
                     <i class="fas fa-file-pdf"></i>
                     <h3>PDF Tools</h3>
-                    <p>Convert, merge, split, compress, and edit PDF files with our free online tools.</p>
-                </div>
-                <div class="feature-card">
+                    <p>Convert, merge, split, edit PDF files</p>
+                </a>
+                <a href="image-tools.html" class="tool-card">
                     <i class="fas fa-image"></i>
                     <h3>Image Tools</h3>
-                    <p>Convert, resize, compress, and edit images in various formats.</p>
-                </div>
-                <div class="feature-card">
+                    <p>Convert, resize, compress images</p>
+                </a>
+                <a href="video-tools.html" class="tool-card">
                     <i class="fas fa-video"></i>
                     <h3>Video Tools</h3>
-                    <p>Convert, compress, trim, and edit video files online.</p>
+                    <p>Convert, compress, edit videos</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Our Tools?</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Processing</h3>
+                    <p>All files are processed in your browser. We don't store your files on our servers.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Conversion</h3>
+                    <p>Our tools use advanced algorithms for quick file processing.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-desktop"></i>
+                    <h3>No Installation</h3>
+                    <p>Works directly in your browser - no software to download or install.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>100% Free</h3>
+                    <p>All tools are completely free with no hidden charges.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Ad Unit -->
-        <div class="container ad-container">
+    <!-- Popular Tools Section -->
+    <section class="popular-tools">
+        <div class="container">
+            <h2>Popular PDF Tools</h2>
+            <div class="tool-grid">
+                <a href="pdf-tools.html#convert" class="tool-item">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDF files to editable Word documents</p>
+                </a>
+                <a href="pdf-tools.html#convert" class="tool-item">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>PDF to Excel</h3>
+                    <p>Extract tables from PDF to Excel spreadsheets</p>
+                </a>
+                <a href="pdf-tools.html#merge" class="tool-item">
+                    <i class="fas fa-object-group"></i>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDFs into a single file</p>
+                </a>
+                <a href="pdf-tools.html#split" class="tool-item">
+                    <i class="fas fa-cut"></i>
+                    <h3>Split PDF</h3>
+                    <p>Divide a PDF into multiple files</p>
+                </a>
+                <a href="pdf-tools.html#security" class="tool-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>PDF Password</h3>
+                    <p>Add password protection to your PDF</p>
+                </a>
+                <a href="pdf-tools.html#edit" class="tool-item">
+                    <i class="fas fa-edit"></i>
+                    <h3>Edit PDF</h3>
+                    <p>Modify text, images in your PDF</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Banner -->
+    <section class="ad-banner">
+        <div class="container">
+            <!-- Google AdSense Banner -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-YOUR_ADSENSE_ID"
@@ -84,63 +162,50 @@
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
+    </section>
 
-        <section class="how-it-works">
-            <div class="container">
-                <h2>How It Works</h2>
-                <div class="steps">
-                    <div class="step">
-                        <span>1</span>
-                        <p>Select your tool</p>
-                    </div>
-                    <div class="step">
-                        <span>2</span>
-                        <p>Upload your file</p>
-                    </div>
-                    <div class="step">
-                        <span>3</span>
-                        <p>Process and download</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Tools</h4>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>FreeOnlineTools</h3>
+                    <p>Providing free online tools for PDF, image, and video conversion since 2023.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
                     <ul>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="pdf-tools.html">PDF Tools</a></li>
                         <li><a href="image-tools.html">Image Tools</a></li>
                         <li><a href="video-tools.html">Video Tools</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
+                <div class="footer-col">
+                    <h3>Legal</h3>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h4>Connect</h4>
+                <div class="footer-col">
+                    <h3>Connect</h3>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 FreeTools.online. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FreeOnlineTools. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
