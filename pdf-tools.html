@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head content as index.html -->
-    <title>Free PDF Tools - Convert, Merge, Split, Edit PDF Files</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free PDF Tools - Convert, Merge, Split, Edit PDF Files Online</title>
     <meta name="description" content="Free online PDF tools to convert, merge, split, edit, and secure your PDF documents. No installation required.">
+    
+    <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    
+    <!-- SHOMonetization -->
+    <script src="https://cdn.shomonetization.com/sho.js" sho-publisher-id="YOUR_SHO_ID"></script>
+    
+    <!-- PDF-Lib for PDF manipulation -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Same header as index.html -->
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">FreeOnlineTools</a>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown active">
+                        <a href="pdf-tools.html">PDF Tools <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#convert">Convert PDF</a>
+                            <a href="#merge">Merge PDF</a>
+                            <a href="#split">Split PDF</a>
+                            <a href="#edit">Edit PDF</a>
+                            <a href="#security">PDF Security</a>
+                        </div>
+                    </li>
+                    <li><a href="image-tools.html">Image Tools</a></li>
+                    <li><a href="video-tools.html">Video Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
     <!-- PDF Tools Hero -->
     <section class="sub-hero">
@@ -44,6 +91,14 @@
                     <h3>PDF to PowerPoint</h3>
                     <p>Convert PDF to editable PowerPoint (.pptx)</p>
                     <button class="btn tool-btn" onclick="openToolModal('pdf-to-ppt')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>PDF to JPG</h3>
+                    <p>Convert PDF pages to JPG images</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-to-jpg')">Use Tool</button>
                 </div>
             </div>
         </div>
@@ -85,6 +140,22 @@
                     <p>Adjust margins and crop PDF pages</p>
                     <button class="btn tool-btn" onclick="openToolModal('crop-pdf')">Use Tool</button>
                 </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-sort-numeric-up"></i>
+                    </div>
+                    <h3>Reorder Pages</h3>
+                    <p>Rearrange PDF pages in any order</p>
+                    <button class="btn tool-btn" onclick="openToolModal('reorder-pages')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-import"></i>
+                    </div>
+                    <h3>Extract Pages</h3>
+                    <p>Extract specific pages to a new PDF</p>
+                    <button class="btn tool-btn" onclick="openToolModal('extract-pages')">Use Tool</button>
+                </div>
             </div>
         </div>
     </section>
@@ -125,6 +196,22 @@
                     <p>Add text or image watermark to PDF</p>
                     <button class="btn tool-btn" onclick="openToolModal('watermark-pdf')">Use Tool</button>
                 </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Add Signature</h3>
+                    <p>Digitally sign your PDF documents</p>
+                    <button class="btn tool-btn" onclick="openToolModal('add-signature')">Use Tool</button>
+                </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Rotate PDF</h3>
+                    <p>Rotate pages in your PDF document</p>
+                    <button class="btn tool-btn" onclick="openToolModal('rotate-pdf')">Use Tool</button>
+                </div>
             </div>
         </div>
     </section>
@@ -157,6 +244,14 @@
                     <p>Permanently remove sensitive information</p>
                     <button class="btn tool-btn" onclick="openToolModal('redact-pdf')">Use Tool</button>
                 </div>
+                <div class="pdf-tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>PDF Permissions</h3>
+                    <p>Set editing and printing permissions</p>
+                    <button class="btn tool-btn" onclick="openToolModal('pdf-permissions')">Use Tool</button>
+                </div>
             </div>
         </div>
     </section>
@@ -187,10 +282,369 @@
         </div>
     </div>
 
-    <!-- Same footer as index.html -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>FreeOnlineTools</h3>
+                    <p>Providing free online tools for PDF, image, and video conversion since 2023.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pdf-tools.html">PDF Tools</a></li>
+                        <li><a href="image-tools.html">Image Tools</a></li>
+                        <li><a href="video-tools.html">Video Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 FreeOnlineTools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/pdf-tools.js"></script>
+    <script>
+        // PDF Tools Implementation
+        const { PDFDocument, rgb } = PDFLib;
+        
+        // Function to handle PDF file upload
+        async function loadPdf(file) {
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                return pdfDoc;
+            } catch (error) {
+                console.error("Error loading PDF:", error);
+                alert("Error loading PDF. Please make sure it's a valid PDF file.");
+                return null;
+            }
+        }
+        
+        // Function to save PDF
+        async function savePdf(pdfDoc, fileName) {
+            const pdfBytes = await pdfDoc.save();
+            download(pdfBytes, fileName, "application/pdf");
+        }
+        
+        // Merge PDFs
+        async function mergePdfs(files) {
+            const mergedPdf = await PDFDocument.create();
+            
+            for (const file of files) {
+                const pdfDoc = await loadPdf(file);
+                if (!pdfDoc) return;
+                
+                const pages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                pages.forEach(page => mergedPdf.addPage(page));
+            }
+            
+            await savePdf(mergedPdf, "merged-document.pdf");
+        }
+        
+        // Split PDF
+        async function splitPdf(file, ranges) {
+            const pdfDoc = await loadPdf(file);
+            if (!pdfDoc) return;
+            
+            for (const range of ranges) {
+                const newPdf = await PDFDocument.create();
+                const pages = await newPdf.copyPages(pdfDoc, range);
+                pages.forEach(page => newPdf.addPage(page));
+                
+                await savePdf(newPdf, `split-document-${range[0] + 1}-${range[range.length - 1] + 1}.pdf`);
+            }
+        }
+        
+        // Delete pages from PDF
+        async function deletePdfPages(file, pagesToDelete) {
+            const pdfDoc = await loadPdf(file);
+            if (!pdfDoc) return;
+            
+            const pageCount = pdfDoc.getPageCount();
+            const pagesToKeep = Array.from({ length: pageCount }, (_, i) => i)
+                .filter(i => !pagesToDelete.includes(i));
+            
+            const newPdf = await PDFDocument.create();
+            const pages = await newPdf.copyPages(pdfDoc, pagesToKeep);
+            pages.forEach(page => newPdf.addPage(page));
+            
+            await savePdf(newPdf, "document-without-pages.pdf");
+        }
+        
+        // Add password to PDF
+        async function addPasswordToPdf(file, password) {
+            const pdfDoc = await loadPdf(file);
+            if (!pdfDoc) return;
+            
+            // Note: PDF-lib doesn't support encryption yet, this is a placeholder
+            // In a real implementation, you would need a different library or backend service
+            alert("Password protection requires a backend service or different library. PDF-lib doesn't support encryption yet.");
+            
+            // For demo purposes, we'll just save the original file
+            await savePdf(pdfDoc, "protected-document.pdf");
+        }
+        
+        // Add watermark to PDF
+        async function addWatermarkToPdf(file, watermarkText) {
+            const pdfDoc = await loadPdf(file);
+            if (!pdfDoc) return;
+            
+            const pages = pdfDoc.getPages();
+            const { width, height } = pages[0].getSize();
+            
+            pages.forEach(page => {
+                page.drawText(watermarkText, {
+                    x: width / 2 - 100,
+                    y: height / 2,
+                    size: 50,
+                    opacity: 0.2,
+                    color: rgb(0.5, 0.5, 0.5),
+                    rotate: Math.PI / 4,
+                });
+            });
+            
+            await savePdf(pdfDoc, "watermarked-document.pdf");
+        }
+        
+        // Rotate PDF pages
+        async function rotatePdfPages(file, rotationAngle) {
+            const pdfDoc = await loadPdf(file);
+            if (!pdfDoc) return;
+            
+            const pages = pdfDoc.getPages();
+            pages.forEach(page => {
+                page.setRotation(rotationAngle);
+            });
+            
+            await savePdf(pdfDoc, "rotated-document.pdf");
+        }
+        
+        // Initialize tool modals
+        function initToolModals() {
+            // PDF to Word (placeholder - would require backend service)
+            document.querySelectorAll('[onclick="openToolModal(\'pdf-to-word\')"]').forEach(btn => {
+                btn.onclick = () => {
+                    document.getElementById('modalContent').innerHTML = `
+                        <div class="tool-interface">
+                            <h3>PDF to Word Converter</h3>
+                            <p>Convert your PDF files to editable Word documents (.docx)</p>
+                            
+                            <div class="file-upload-area" id="dropArea">
+                                <i class="fas fa-file-upload"></i>
+                                <p>Drag & drop your PDF file here or click to browse</p>
+                                <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                                <button class="btn" onclick="document.getElementById('fileInput').click()">Select File</button>
+                            </div>
+                            
+                            <div class="options-section">
+                                <h4>Conversion Options</h4>
+                                <div class="option-group">
+                                    <label for="outputFormat">Output Format:</label>
+                                    <select id="outputFormat">
+                                        <option value="docx">Word Document (.docx)</option>
+                                        <option value="doc">Word 97-2003 Document (.doc)</option>
+                                        <option value="rtf">Rich Text Format (.rtf)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button class="process-btn" onclick="alert('PDF to Word conversion requires a backend service. This is a frontend demo.');">Convert to Word</button>
+                            
+                            <div class="download-section" id="downloadSection" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Conversion Complete!</h4>
+                                <p>Your file has been successfully converted to Word format.</p>
+                                <a href="#" class="download-btn" id="downloadLink">Download Word File</a>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('toolModal').style.display = 'block';
+                    initFileUpload();
+                };
+            });
+            
+            // Merge PDFs
+            document.querySelectorAll('[onclick="openToolModal(\'merge-pdf\')"]').forEach(btn => {
+                btn.onclick = () => {
+                    document.getElementById('modalContent').innerHTML = `
+                        <div class="tool-interface">
+                            <h3>Merge PDF Files</h3>
+                            <p>Combine multiple PDF documents into one file</p>
+                            
+                            <div class="file-upload-area" id="dropArea">
+                                <i class="fas fa-file-upload"></i>
+                                <p>Drag & drop your PDF files here or click to browse</p>
+                                <input type="file" id="fileInput" accept=".pdf" multiple style="display: none;">
+                                <button class="btn" onclick="document.getElementById('fileInput').click()">Select Files</button>
+                            </div>
+                            
+                            <div id="fileList" style="margin-top: 20px;"></div>
+                            
+                            <button class="process-btn" id="mergeBtn" disabled>Merge PDFs</button>
+                            
+                            <div class="download-section" id="downloadSection" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Merge Complete!</h4>
+                                <p>Your PDF files have been successfully merged.</p>
+                                <a href="#" class="download-btn" id="downloadLink">Download Merged PDF</a>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('toolModal').style.display = 'block';
+                    
+                    const fileInput = document.getElementById('fileInput');
+                    const mergeBtn = document.getElementById('mergeBtn');
+                    const fileList = document.getElementById('fileList');
+                    
+                    fileInput.addEventListener('change', function() {
+                        if (this.files.length > 0) {
+                            fileList.innerHTML = `
+                                <h4>Selected Files (${this.files.length}):</h4>
+                                <ul style="margin-top: 10px;">
+                                    ${Array.from(this.files).map(file => `<li>${file.name} (${(file.size / 1024).toFixed(2)} KB)</li>`).join('')}
+                                </ul>
+                            `;
+                            mergeBtn.disabled = false;
+                        }
+                    });
+                    
+                    mergeBtn.addEventListener('click', async function() {
+                        if (fileInput.files.length < 2) {
+                            alert("Please select at least 2 PDF files to merge");
+                            return;
+                        }
+                        
+                        this.disabled = true;
+                        this.textContent = "Merging...";
+                        
+                        try {
+                            await mergePdfs(fileInput.files);
+                            document.getElementById('downloadSection').style.display = 'block';
+                        } catch (error) {
+                            alert("Error merging PDFs: " + error.message);
+                        } finally {
+                            this.disabled = false;
+                            this.textContent = "Merge PDFs";
+                        }
+                    });
+                    
+                    initFileUpload();
+                };
+            });
+            
+            // Add Watermark
+            document.querySelectorAll('[onclick="openToolModal(\'watermark-pdf\')"]').forEach(btn => {
+                btn.onclick = () => {
+                    document.getElementById('modalContent').innerHTML = `
+                        <div class="tool-interface">
+                            <h3>Add Watermark to PDF</h3>
+                            <p>Add a text watermark to your PDF document</p>
+                            
+                            <div class="file-upload-area" id="dropArea">
+                                <i class="fas fa-file-upload"></i>
+                                <p>Drag & drop your PDF file here or click to browse</p>
+                                <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                                <button class="btn" onclick="document.getElementById('fileInput').click()">Select File</button>
+                            </div>
+                            
+                            <div class="options-section">
+                                <h4>Watermark Options</h4>
+                                <div class="option-group">
+                                    <label for="watermarkText">Watermark Text:</label>
+                                    <input type="text" id="watermarkText" value="CONFIDENTIAL" required>
+                                </div>
+                                <div class="option-group">
+                                    <label for="watermarkOpacity">Opacity:</label>
+                                    <input type="range" id="watermarkOpacity" min="0.1" max="1" step="0.1" value="0.2">
+                                    <span id="opacityValue">0.2</span>
+                                </div>
+                            </div>
+                            
+                            <button class="process-btn" id="watermarkBtn" disabled>Add Watermark</button>
+                            
+                            <div class="download-section" id="downloadSection" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Watermark Added!</h4>
+                                <p>Your PDF has been successfully watermarked.</p>
+                                <a href="#" class="download-btn" id="downloadLink">Download Watermarked PDF</a>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('toolModal').style.display = 'block';
+                    
+                    const fileInput = document.getElementById('fileInput');
+                    const watermarkBtn = document.getElementById('watermarkBtn');
+                    const opacitySlider = document.getElementById('watermarkOpacity');
+                    const opacityValue = document.getElementById('opacityValue');
+                    
+                    opacitySlider.addEventListener('input', function() {
+                        opacityValue.textContent = this.value;
+                    });
+                    
+                    fileInput.addEventListener('change', function() {
+                        watermarkBtn.disabled = !this.files[0];
+                    });
+                    
+                    watermarkBtn.addEventListener('click', async function() {
+                        if (!fileInput.files[0]) {
+                            alert("Please select a PDF file");
+                            return;
+                        }
+                        
+                        const watermarkText = document.getElementById('watermarkText').value;
+                        if (!watermarkText) {
+                            alert("Please enter watermark text");
+                            return;
+                        }
+                        
+                        this.disabled = true;
+                        this.textContent = "Processing...";
+                        
+                        try {
+                            await addWatermarkToPdf(fileInput.files[0], watermarkText);
+                            document.getElementById('downloadSection').style.display = 'block';
+                        } catch (error) {
+                            alert("Error adding watermark: " + error.message);
+                        } finally {
+                            this.disabled = false;
+                            this.textContent = "Add Watermark";
+                        }
+                    });
+                    
+                    initFileUpload();
+                };
+            });
+            
+            // Add similar implementations for other tools...
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initToolModals();
+        });
+    </script>
 </body>
 </html>
