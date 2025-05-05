@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Advanced PDF to PowerPoint Converter</title>
+<style>
+  /* Modern, clean, responsive styling */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 10px;
+  }
+  header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #58a6ff;
+    margin-bottom: 10px;
+    text-align: center;
+    user-select: none;
+  }
+  #upload-section {
+    background: #161b22;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.25);
+    padding: 12px 20px;
+    margin-bottom: 12px;
+  }
+  #upload-label {
+    display: block;
+    background: #238636;
+    color: #e6fffa;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  #upload-label:hover {
+    background: #2ea043;
+  }
+  #file-input {
+    display: none;
+  }
+  #pages-preview {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+    max-height: 240px;
+    overflow-y: auto;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px;
+    background: #161b22;
+  }
+  .page-item {
+    border: 1px solid transparent;
+    border-radius: 7px;
+    padding: 4px;
+    background: #0d1117;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+  .page-item.selected {
+    border-color: #58a6ff;
+    background: #22272e;
+  }
+  .page-item canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .page-checkbox {
+    margin-top: 4px;
+  }
+  #convert-section {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  button {
+    background: #238636;
+    border: none;
+    color: #e6fffa;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    flex: 1;
+    max-width: 180px;
+  }
+  button:hover:not(:disabled) {
+    background: #2ea043;
+  }
+  button:disabled {
+    background: #444c56;
+    cursor: not-allowed;
+  }
+  footer {
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: #6e7681;
+    padding: 10px 0 6px;
+    text-align: center;
+  }
+
+  /* Scrollbar styling for previews */
+  #pages-preview::-webkit-scrollbar {
+    width: 6px;
+  }
+  #pages-preview::-webkit-scrollbar-track {
+    background: #0d1117;
+  }
+  #pages-preview::-webkit-scrollbar-thumb {
+    background-color: #58a6ff88;
+    border-radius: 3px;
+  }
+
+  /* Mobile optimizations */
+  @media(max-width: 400px) {
+    #upload-section {
+      max-width: 100%;
+    }
+    #pages-preview {
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      max-height: 180px;
+    }
+    button {
+      max-width: 100%;
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>Advanced PDF to PowerPoint Converter</header>
+
+<section id="upload-section" aria-label="Upload PDF file section">
+  <label id="upload-label" for="file-input" tabindex="0" aria-describedby="upload-desc">
+    Select PDF file to convert
+  </label>
+  <input type="file" id="file-input" accept="application/pdf" aria-describedby="upload-desc" />
+  <div id="upload-desc" style="font-size:0.8rem; color:#8b949e; margin-top:4px;">
+    Supported format: PDF (max size 30MB)
+  </div>
+  <div id="pages-preview" aria-live="polite" aria-label="PDF pages preview"></div>
+</section>
+
+<section id="convert-section" aria-label="Conversion controls">
+  <button id="select-all-btn" type="button">Select All Pages</button>
+  <button id="convert-btn" type="button" disabled>Convert to PowerPoint</button>
+</section>
+
+<footer>
+  &copy; 2024 — PDF to PPT Converter by BLACKBOXAI
+</footer>
+
+<!-- Libraries from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.7.107/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.10.0/dist/pptxgen.bundle.js"></script>
+
+<script>
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.7.107/build/pdf.worker.min.js';
+
+  const fileInput = document.getElementById('file-input');
+  const pagesPreview = document.getElementById('pages-preview');
+  const convertBtn = document.getElementById('convert-btn');
+  const selectAllBtn = document.getElementById('select-all-btn');
+
+  let pdfDoc = null;
+  let pagesData = []; // array of {pageNumber, viewport, canvas, textContent}
+
+  function clearPreviews() {
+    pagesPreview.innerHTML = '';
+    pagesData = [];
+    convertBtn.disabled = true;
+  }
+
+  function togglePageSelection(index) {
+    const item = pagesPreview.children[index];
+    const checkbox = item.querySelector('input[type=checkbox]');
+    checkbox.checked = !checkbox.checked;
+    item.classList.toggle('selected', checkbox.checked);
+  }
+
+  function updateConvertButtonState() {
+    const anySelected = [...pagesPreview.querySelectorAll('input[type=checkbox]')].some(cb => cb.checked);
+    convertBtn.disabled = !anySelected;
+  }
+
+  async function renderPage(page, scale = 1.2) {
+    const viewport = page.getViewport({ scale });
+    const canvas = document.createElement('canvas');
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    const context = canvas.getContext('2d');
+
+    const renderContext = {
+      canvasContext: context,
+      viewport: viewport,
+    };
+
+    await page.render(renderContext).promise;
+    return {canvas, viewport};
+  }
+
+  async function extractText(page) {
+    const textContent = await page.getTextContent();
+    const strings = textContent.items.map(item => item.str);
+    return strings.join(' ');
+  }
+
+  function addPageItem(pageNumber, canvas) {
+    const item = document.createElement('div');
+    item.className = 'page-item selected';
+    item.tabIndex = 0;
+    item.setAttribute('role', 'checkbox');
+    item.setAttribute('aria-checked', 'true');
+    item.setAttribute('aria-label', `Page ${pageNumber}`);
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = true;
+    checkbox.classList.add('page-checkbox');
+    checkbox.setAttribute('aria-label', `Select page ${pageNumber} for conversion`);
+
+    checkbox.addEventListener('change', () => {
+      item.classList.toggle('selected', checkbox.checked);
+      item.setAttribute('aria-checked', checkbox.checked.toString());
+      updateConvertButtonState();
+    });
+
+    item.addEventListener('click', () => {
+      checkbox.checked = !checkbox.checked;
+      checkbox.dispatchEvent(new Event('change'));
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        checkbox.checked = !checkbox.checked;
+        checkbox.dispatchEvent(new Event('change'));
+      }
+    });
+
+    item.appendChild(canvas);
+    item.appendChild(checkbox);
+
+    pagesPreview.appendChild(item);
+  }
+
+  fileInput.addEventListener('change', async (e) => {
+    clearPreviews();
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.type !== "application/pdf") {
+      alert('Please select a valid PDF file.');
+      return;
+    }
+    if (file.size > 30 * 1024 * 1024) {
+      alert('Maximum file size is 30MB.');
+      return;
+    }
+    const typedarray = new Uint8Array(await file.arrayBuffer());
+    try {
+      pdfDoc = await pdfjsLib.getDocument({data: typedarray}).promise;
+    } catch (err) {
+      alert('Error loading PDF: '+ err.message);
+      return;
+    }
+
+    const maxPagesToLoad = Math.min(pdfDoc.numPages, 30); // Limit to 30 pages preview
+    for (let pageNum=1; pageNum<=maxPagesToLoad; pageNum++) {
+      const page = await pdfDoc.getPage(pageNum);
+      const {canvas, viewport} = await renderPage(page, 1.2);
+      const textContent = await extractText(page);
+      pagesData.push({pageNumber: pageNum, canvas, viewport, textContent});
+      addPageItem(pageNum, canvas);
+    }
+    if (pdfDoc.numPages > maxPagesToLoad) {
+      const note = document.createElement('div');
+      note.style.color = '#8b949e';
+      note.style.fontSize = '0.9rem';
+      note.style.marginTop = '6px';
+      note.style.textAlign = 'center';
+      note.textContent = `Preview limited to first ${maxPagesToLoad} pages out of ${pdfDoc.numPages}. All pages will be converted.`;
+      pagesPreview.parentElement.appendChild(note);
+    }
+    updateConvertButtonState();
+  });
+
+  selectAllBtn.addEventListener('click', () => {
+    if (!pagesData.length) return;
+    // Toggle all: if all selected => unselect all else select all
+    const allSelected = [...pagesPreview.querySelectorAll('input[type=checkbox]')].every(cb => cb.checked);
+    pagesPreview.querySelectorAll('input[type=checkbox]').forEach(cb => {
+      cb.checked = !allSelected;
+      cb.dispatchEvent(new Event('change'));
+    });
+  });
+
+  convertBtn.addEventListener('click', async () => {
+    if (!pdfDoc) return;
+
+    convertBtn.disabled = true;
+    selectAllBtn.disabled = true;
+    convertBtn.textContent = 'Converting...';
+
+    try {
+      let pptx = new PptxGenJS();
+
+      // Set slide size to 16:9 (default)
+      pptx.layout = 'LAYOUT_WIDE'; 
+
+      // Selected page numbers
+      const selectedPages = [];
+      const checkboxes = pagesPreview.querySelectorAll('input[type=checkbox]');
+      checkboxes.forEach((cb, idx) => {
+        if (cb.checked) selectedPages.push(idx+1); // page numbers start at 1
+      });
+
+      const totalPages = pdfDoc.numPages;
+      // For pages beyond preview (if any) add their data now (text minimal because no canvas)
+      for(let i = pagesData.length+1; i <= totalPages; i++) {
+        selectedPages.includes(i) || selectedPages.push(i);  // Make sure all selected, if converting all
+      }
+      // filtered only selected pages, sorted ascending
+      const pagesToConvert = selectedPages.sort((a,b)=>a-b);
+
+      // We will process pages in order
+      for (const pNum of pagesToConvert) {
+        let page = null;
+        if (pNum <= pagesData.length) {
+          // We already have canvas and text for previewed pages
+          var pageData = pagesData[pNum - 1];
+          page = pageData;
+          
+        } else {
+          // Load page only, render canvas & extract text
+          const pageObj = await pdfDoc.getPage(pNum);
+          const {canvas} = await renderPage(pageObj, 1.5);
+          const textContent = await extractText(pageObj);
+          page = {pageNumber: pNum, canvas, textContent};
+        }
+
+        // Add slide
+        let slide = pptx.addSlide();
+
+        // Add the page canvas as image in slide (JPEG)
+        try {
+          const imgData = page.canvas.toDataURL('image/jpeg', 0.85);
+          slide.addImage({
+            data: imgData,
+            x: 0.3,
+            y: 0.3,
+            w: 9,
+            h: 5.06,
+            sizing: { type: 'contain', w: 9, h: 5.06 },
+          });
+        } catch(e) {
+          // fallback: skip image
+        }
+
+        // Add slide title with page number
+        slide.addText(`Page ${page.pageNumber}`, {
+          x: 0.2, y: 5.5, fontSize: 18, bold: true, color: '0366d6',
+          fontFace: 'Arial',
+        });
+
+        // Add extracted text as notes (with limit)
+        let notesText = page.textContent ? page.textContent.trim() : '';
+        if (notesText.length > 800) notesText = notesText.slice(0, 800) + '...';
+        slide.addNotes(notesText || 'No extractable text.');
+
+        await new Promise(res => setTimeout(res, 10)); // small break to keep UI responsive
+      }
+
+      pptx.writeFile({ fileName: 'converted_presentation.pptx' });
+    } catch (err) {
+      alert('Conversion error: ' + err.message);
+    } finally {
+      convertBtn.disabled = false;
+      selectAllBtn.disabled = false;
+      convertBtn.textContent = 'Convert to PowerPoint';
+    }
+  });
+</script>
+</body>
+</html>
+
