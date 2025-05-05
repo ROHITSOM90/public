@@ -568,3 +568,9 @@ a {
 .download-btn:hover {
     background-color: #2d9249;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
