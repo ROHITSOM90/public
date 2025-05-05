@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced PDF Compressor - Optimize Your PDFs Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+        .drop-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .drop-zone:hover, .drop-zone.active {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        .compression-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .compression-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-blue-600">
+                        <i class="fas fa-file-pdf text-3xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Advanced PDF Compressor</h1>
+                        <p class="text-sm text-gray-500">Optimize PDFs while maintaining quality</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 transition">How It Works</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600 transition">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <section class="mb-20">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Compress PDF Files Without Losing Quality</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Reduce file size while maintaining document integrity. Perfect for email attachments, web uploads, and storage optimization.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div id="compress-tool" class="space-y-8">
+                    <!-- File Upload Area -->
+                    <div id="upload-container" class="flex flex-col items-center">
+                        <div id="drop-zone" class="drop-zone w-full p-8 text-center cursor-pointer">
+                            <div class="text-blue-600 mb-4">
+                                <i class="fas fa-cloud-upload-alt text-5xl"></i>
+                            </div>
+                            <h3 class="text-xl font-medium mb-2">Drop your PDF files here</h3>
+                            <p class="text-gray-500 mb-4">or</p>
+                            <button id="browse-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition">
+                                Browse Files
+                            </button>
+                            <input type="file" id="file-input" accept=".pdf" class="hidden" multiple>
+                            <p class="text-gray-400 text-sm mt-4">Maximum file size: 100MB</p>
+                        </div>
+                    </div>
+
+                    <!-- Compression Options -->
+                    <div id="compression-options" class="hidden">
+                        <h3 class="text-xl font-medium mb-4">Compression Settings</h3>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <label for="compression-level" class="text-gray-700 font-medium">Compression Level</label>
+                                <span id="compression-value" class="text-blue-600 font-medium">Medium</span>
+                            </div>
+                            <input type="range" id="compression-level" min="1" max="3" value="2" class="compression-slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>Low (Better Quality)</span>
+                                <span>Medium</span>
+                                <span>High (Smaller Size)</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 border border-gray-200 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <input type="checkbox" id="remove-meta" class="w-4 h-4 text-blue-600 rounded">
+                                    <label for="remove-meta" class="ml-2 text-gray-700">Remove Metadata</label>
+                                </div>
+                                <p class="text-gray-500 text-sm">Strip document metadata to further reduce file size</p>
+                            </div>
+                            <div class="p-4 border border-gray-200 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <input type="checkbox" id="optimize-images" class="w-4 h-4 text-blue-600 rounded" checked>
+                                    <label for="optimize-images" class="ml-2 text-gray-700">Optimize Images</label>
+                                </div>
+                                <p class="text-gray-500 text-sm">Compress images within the PDF for better results</p>
+                            </div>
+                        </div>
+
+                        <button id="compress-btn" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition flex justify-center items-center">
+                            <i class="fas fa-compress-alt mr-2"></i>
+                            Compress PDF
+                        </button>
+                    </div>
+
+                    <!-- Processing State -->
+                    <div id="processing-state" class="hidden">
+                        <div class="text-center py-10">
+                            <div class="mb-4">
+                                <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent"></div>
+                            </div>
+                            <h3 class="text-xl font-medium mb-2">Processing your PDF...</h3>
+                            <p class="text-gray-500">This may take a few moments depending on file size</p>
+                            
+                            <div class="mt-6 w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="progress-bar" class="progress-bar bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2"><span id="progress-percent">0</span>% Complete</p>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div id="result-container" class="hidden">
+                        <div class="text-center">
+                            <div class="bg-green-100 text-green-700 rounded-full p-4 inline-flex mb-4">
+                                <i class="fas fa-check-circle text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-medium mb-6">Compression Complete!</h3>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600">Original Size:</span>
+                                <span id="original-size" class="font-medium">0 MB</span>
+                            </div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-600">Compressed Size:</span>
+                                <span id="compressed-size" class="font-medium text-green-600">0 MB</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Reduction:</span>
+                                <span id="size-reduction" class="font-medium text-blue-600">0%</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <a id="download-btn" href="#" class="bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-3 px-6 rounded-lg transition flex-1">
+                                <i class="fas fa-download mr-2"></i> Download Compressed PDF
+                            </a>
+                            <button id="compress-another" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-6 rounded-lg transition flex-1">
+                                Compress Another File
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 text-center">Advanced Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-bolt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Fast Processing</h3>
+                    <p class="text-gray-600">Compress your PDFs within seconds, even for large files with multiple pages.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-shield-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Secure Compression</h3>
+                    <p class="text-gray-600">All files are processed locally in your browser. Nothing is uploaded to our servers.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-sliders-h text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Adjustable Quality</h3>
+                    <p class="text-gray-600">Fine-tune compression settings to balance file size and document quality.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 text-center">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-upload text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">1. Upload</h3>
+                    <p class="text-gray-600">Select or drag & drop your PDF files into the upload area</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cog text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">2. Configure</h3>
+                    <p class="text-gray-600">Choose your compression level and optimization settings</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-download text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">3. Download</h3>
+                    <p class="text-gray-600">Get your compressed PDF file ready for use</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium text-left">Will my PDF quality be reduced?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-content mt-3 hidden">
+                        <p class="text-gray-600">
+                            Our advanced algorithms aim to maintain the best possible quality while reducing file size. 
+                            Higher compression levels may affect quality slightly, but our "Low" setting preserves 
+                            quality extremely well while still reducing file size.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium text-left">Is there a file size limit?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-content mt-3 hidden">
+                        <p class="text-gray-600">
+                            The maximum file size is 100MB per PDF. For larger files, you may need to use our desktop version
+                            or contact us for enterprise solutions.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium text-left">Is my data secure?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-content mt-3 hidden">
+                        <p class="text-gray-600">
+                            Yes, absolutely. Our compression tool processes files directly in your browser. Your PDFs are never 
+                            uploaded to our servers, ensuring complete privacy and security.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium text-left">Can I compress multiple files at once?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="faq-content mt-3 hidden">
+                        <p class="text-gray-600">
+                            Yes, you can select multiple PDFs for compression. Each file will be processed individually, 
+                            and you can download them all when processing is complete.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <h3 class="text-lg font-medium mb-4">About Advanced PDF Compressor</h3>
+                    <p class="text-gray-400">
+                        A powerful online tool to compress and optimize your PDF files while maintaining quality.
+                        Fast, secure, and free for personal use.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="#features" class="hover:text-blue-400 transition">Features</a></li>
+                        <li><a href="#how-it-works" class="hover:text-blue-400 transition">How It Works</a></li>
+                        <li><a href="#faq" class="hover:text-blue-400 transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Contact</h3>
+                    <p class="text-gray-400">
+                        For support or inquiries, please contact us at:
+                        <a href="mailto:support@pdfcompressor.com" class="text-blue-400 hover:text-blue-300 transition">support@pdfcompressor.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 Advanced PDF Compressor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('file-input');
+            const browseBtn = document.getElementById('browse-btn');
+            const compressBtn = document.getElementById('compress-btn');
+            const compressAnother = document.getElementById('compress-another');
+            const compressionLevel = document.getElementById('compression-level');
+            const compressionValue = document.getElementById('compression-value');
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = document.getElementById('progress-percent');
+            
+            // Sections
+            const uploadContainer = document.getElementById('upload-container');
+            const compressionOptions = document.getElementById('compression-options');
+            const processingState = document.getElementById('processing-state');
+            const resultContainer = document.getElementById('result-container');
+            
+            // Stats
+            const originalSize = document.getElementById('original-size');
+            const compressedSize = document.getElementById('compressed-size');
+            const sizeReduction = document.getElementById('size-reduction');
+            
+            // Event Listeners
+            browseBtn.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    handleFiles(this.files);
+                }
+            });
+            
+            dropZone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.add('active');
+            });
+            
+            dropZone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.remove('active');
+            });
+            
+            dropZone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.remove('active');
+                
+                if (e.dataTransfer.files.length > 0) {
+                    handleFiles(e.dataTransfer.files);
+                }
+            });
+            
+            compressionLevel.addEventListener('input', function() {
+                const values = ['Low', 'Medium', 'High'];
+                compressionValue.textContent = values[this.value - 1];
+            });
+            
+            compressBtn.addEventListener('click', startCompression);
+            compressAnother.addEventListener('click', resetTool);
+            
+            // FAQ toggle functionality
+            document.querySelectorAll('.faq-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.fas');
+                    
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        content.classList.add('hidden');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Functions
+            function handleFiles(files) {
+                // Filter only PDF files
+                const pdfFiles = Array.from(files).filter(file => file.type === 'application/pdf');
+                
+                if (pdfFiles.length === 0) {
+                    alert('Please select PDF files only.');
+                    return;
+                }
+                
+                // Store file info and show options
+                const totalSize = pdfFiles.reduce((acc, file) => acc + file.size, 0) / (1024 * 1024);
+                originalSize.textContent = totalSize.toFixed(2) + ' MB';
+                
+                uploadContainer.classList.add('hidden');
+                compressionOptions.classList.remove('hidden');
+            }
+            
+            function startCompression() {
+                // Hide options and show processing
+                compressionOptions.classList.add('hidden');
+                processingState.classList.remove('hidden');
+                
+                // Simulate processing with progress
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 3;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        setTimeout(showResults, 500);
+                    }
+                    
+                    progressBar.style.width = `${progress}%`;
+                    progressPercent.textContent = Math.round(progress);
+                }, 100);
+            }
+            
+            function showResults() {
+                processingState.classList.add('hidden');
+                resultContainer.classList.remove('hidden');
+                
+                // Simulate compression results based on compression level
+                const origSizeVal = parseFloat(originalSize.textContent);
+                let compressionRatio;
+                
+                switch(compressionLevel.value) {
+                    case '1': // Low
+                        compressionRatio = 0.85;
+                        break;
+                    case '2': // Medium
+                        compressionRatio = 0.65;
+                        break;
+                    case '3': // High
+                        compressionRatio = 0.45;
+                        break;
+                    default:
+                        compressionRatio = 0.65;
+                }
+                
+                const compSize = origSizeVal * compressionRatio;
+                compressedSize.textContent = compSize.toFixed(2) + ' MB';
+                
+                const reduction = 100 - (compSize / origSizeVal * 100);
+                sizeReduction.textContent = reduction.toFixed(1) + '%';
+                
+                // Add download link (simulated)
+                const downloadBtn = document.getElementById('download-btn');
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This is a UI demo. In a real application, this would download your compressed PDF.');
+                });
+            }
+            
+            function resetTool() {
+                resultContainer.classList.add('hidden');
+                uploadContainer.classList.remove('hidden');
+                fileInput.value = '';
+                progressBar.style.width = '0%';
+                progressPercent.textContent = '0';
+            }
+        });
+    </script>
+</body>
+</html>
